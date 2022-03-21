@@ -6,7 +6,8 @@ COPY ./dockerApplication/Dockerfile .
 RUN mvn package -DskipTests
 ENTRYPOINT ["java","-cp","/workspace/app/target/*","Application"]
 
-FROM mysql
-WORKDIR /workspace/mysql
-EXPOSE 3306
-ENV MYSQL_ROOT_PASSWORD root
+#FROM openjdk:11-jdk
+#WORKDIR /app
+#COPY --from=build /workspace/app/target /app/lib
+#ENTRYPOINT ["java","-cp","/app/lib/*","Application"]
+#CMD ls /app

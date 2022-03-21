@@ -11,15 +11,15 @@ public class Currency {
         this.currency = currency;
     }
 
-    String getCurrency() {
+    public String getCurrency() {
         return currency.replace(" ", "_");
     }
 
-    String getDate() {
+    public String getDate() {
         return LocalDate.now().toString();
     }
 
-    float getCourse() {
+    public float getCourse() {
         float course = 0f;
         try {
             final URL        URL      = new URL("https://www.cbr.ru/currency_base/daily/");

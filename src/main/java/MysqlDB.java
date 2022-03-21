@@ -8,12 +8,11 @@ public class MysqlDB{
     }
 
     public static Connection getConnection() {
-        return ConnectionMysql.getInstance( "jdbc:mysql://localhost:3306/mysql", "root", "root");
+        return MysqlConnection.getInstance( "jdbc:mysql://192.168.96.3:3306/mysql", "root", "root");
     }
 
     public static boolean insertCurrencyCourse(Currency currency) {
-
-        boolean isSelect = false;
+        boolean isInsert = false;
 
         try {
             Statement statement = getConnection().createStatement();
@@ -23,12 +22,11 @@ public class MysqlDB{
             String select = String.format("SELECT * FROM %s WHERE Date='%s'", currency.getCurrency(), currency.getDate());
             statement.execute(createIfNotExist);
             statement.execute(insertIfNotExist);
-            isSelect = statement.execute(select);
+            isInsert = statement.execute(select);
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return isSelect;
+        return isInsert;
     }
 }
