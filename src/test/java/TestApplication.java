@@ -11,13 +11,13 @@ public class TestApplication {
 
     @Test
     public void testMysqlDriver() throws SQLException {
-        Assert.assertEquals("com.mysql.cj.jdbc.Driver", DriverManager.getDriver("jdbc:mysql://localhost:3306/mysql").getClass().getName());
+        Assert.assertEquals("com.mysql.cj.jdbc.Driver", DriverManager.getDriver("jdbc:mysql://192.168.96.3:3306/mysql").getClass().getName());
     }
 
     @Test
     public void testMysqlSingleConnection() {
-        Connection connection_1 = MysqlConnection.getInstance("jdbc:mysql://localhost:3306/mysql", "root", "root");
-        Connection connection_2 = MysqlConnection.getInstance("jdbc:mysql://localhost:3306/mysql", "root", "root");
+        Connection connection_1 = MysqlConnection.getInstance("jdbc:mysql://192.168.96.3:3306/mysql", "root", "root");
+        Connection connection_2 = MysqlConnection.getInstance("jdbc:mysql://192.168.96.3:3306/mysql", "root", "root");
         Assert.assertEquals(connection_1, connection_2);
     }
 
