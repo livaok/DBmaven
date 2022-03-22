@@ -9,4 +9,4 @@ ENTRYPOINT ["java","-cp","/workspace/app/target/*","Application"]
 FROM mysql
 WORKDIR /workspace/mysql
 EXPOSE 3306
-ENV MYSQL_ROOT_PASSWORD root
+#ENV MYSQL_ROOT_PASSWORD root

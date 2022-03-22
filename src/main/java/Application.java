@@ -8,16 +8,13 @@ public class Application {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
         System.out.println("START...................................");
-        Class.forName("com.mysql.jdbc.Driver");
-        // Currency euro   = new Currency("Евро");
-        // Currency dollar = new Currency("Доллар");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-        // MysqlDB.insertCurrencyCourse(euro);
-        // MysqlDB.insertCurrencyCourse(dollar);
+        Currency euro   = new Currency("Евро");
+        Currency dollar = new Currency("Доллар");
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.96.3:3306/mysql",
-            "root", "root");
-        System.out.println(connection);
+        MysqlDB.insertCurrencyCourse(euro);
+        MysqlDB.insertCurrencyCourse(dollar);
 
         System.out.println("END.....................................");
     }

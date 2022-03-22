@@ -1,33 +1,32 @@
-version: "2.1"
+version  : "2.1"
 
-services:
-  app:
-    build:
-      context: .
-      dockerfile: ./dockerApplication/Dockerfile
-    networks:
+services :
+  app :
+    build      :
+      context    : .
+      dockerfile : ./dockerApplication/Dockerfile
+    networks   :
       - default
-#        ipv4_address: 192.168.96.2
-    depends_on:
-      db:
-         condition: service_healthy
+    depends_on :
+      db :
+        condition : service_healthy
 
-  db:
-    build:
-       context: .
-       dockerfile: ./dockerMysql/Dockerfile
-    networks:
-       default:
-          ipv4_address: 192.168.96.3
+  db  :
+    build       :
+      context    : .
+      dockerfile : ./dockerMysql/Dockerfile
+    networks    :
+      default :
+        ipv4_address : 192.168.96.3
     healthcheck :
-       test: [ "CMD", 'mysqladmin', 'ping', '-h', '192.168.96.3', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
-    cap_add :
+      test : [ "CMD", 'mysqladmin', 'ping', '-h', '192.168.96.3', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
+    cap_add     :
       - SYS_NICE  #CAP_SYS_NICE
 
-networks:
-  default:
-     driver: bridge
-     ipam:
-       config:
-         - subnet: 192.168.96.0/24
-           gateway: 192.168.96.1
+networks :
+  default :
+    driver : bridge
+    ipam   :
+      config :
+        - subnet  : 192.168.96.0/24
+          gateway : 192.168.96.1
